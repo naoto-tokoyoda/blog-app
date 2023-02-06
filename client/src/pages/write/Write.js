@@ -2,13 +2,12 @@ import { useContext, useState } from "react";
 import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
-import CategoriesInput from "../../components/categoriesInput/CategoriesInput"
 import NoImage from "../../images/noImage.jpeg"
 
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [cats, setcats] = useState(["react", "node"]);
+  const [cats, setCats] = useState([]);
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
 
@@ -20,6 +19,7 @@ export default function Write() {
       username: user.username,
       title,
       desc,
+      categories: cats,
     };
     if (file) {
       const data = new FormData();
@@ -31,11 +31,39 @@ export default function Write() {
         await axios.post("/upload", data);
       } catch (err) {}
     }
+
+    // you can search on youtube like how to store array in the mongo fro mreact to node 
+    if(cats){
+      try {
+        await axios.post("/categories", {categories: cats});
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+
     try {
       const res = await axios.post("/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };
+
+  
+
+    const putCatHandler = (e) => {
+        if(e.keyCode !== 32) return 
+        const value = e.target.value;
+
+        if(!value.trim()) return
+        setCats([...cats, value])
+        
+        e.target.value = '';
+
+    }
+
+    const deleteCat = (index) => {
+        setCats(cats.filter((cat, i) => i !== index));
+    }
 
   
   return (
@@ -63,18 +91,27 @@ export default function Write() {
             />
             <input
               type="text"
-              placeholder="Title"
+              placeholder="Title..."
               className="writeInput"
               autoFocus={true}
               onChange={e=>setTitle(e.target.value)}
               required={true}
+              autoCapitalize={true}
             />
           </div>
 
           <div className="writeFormGroup">
-          {
-            // https://stackoverflow.com/questions/58773537/react-input-form-without-form-component
-          }
+            <div className="catsInputContainer">
+                {
+                    cats.map((cat, index) => (
+                        <div className="catInputItem" key={index}>
+                            <span className="text">{cat}</span>
+                            <span className="close" onClick={() => deleteCat(index)}>&times;</span>
+                        </div>
+                    ))
+                }
+                <input type="text" onKeyDown={putCatHandler} autoCapitalize={true} required={true}  className="catsUserInput" placeholder="Press space key after typing category..." />
+            </div>
           </div>
 
           <div className="writeFormGroup">

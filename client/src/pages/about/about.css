@@ -1,0 +1,61 @@
+.about{
+    width:60%;
+    margin: 20px auto;
+    
+}
+
+.aboutTitle h1{
+    font-size: 30px;
+}
+
+.aboutTitle hr{
+    opacity: 0.5;
+    margin: 20px 0px 20px 0px;
+    background-color: #e5e5e5;
+}
+
+.aboutInfosWrapper{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.aboutProfile{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    
+}
+
+.aboutProfile h1{
+    
+    margin-bottom:30px;
+
+}
+
+.aboutProfile h3{
+    color:rgb(115,115,115);
+    line-height: 25px;
+    text-align: center;
+}
+
+.aboutProfileImg{
+    width:300px;
+    height:auto;
+}
+
+.aboutProfileIntroduction p{
+    font-size:18px;
+    line-height: 30px;
+    margin-bottom:22px;
+    text-align:justify;
+}
+
+
+.aboutProfileIntroduction ul{
+    padding-left:20px;
+    line-height: 22px;
+}
+.aboutProfile, .aboutProfileIntroduction{
+    padding:20px;
+}

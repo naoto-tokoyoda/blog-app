@@ -33,13 +33,8 @@ const Topbar = () => {
                   </Link>
                 </li>
                 <li className="topListItem">
-                  <Link to="/" className="link">
+                  <Link to="/about" className="link">
                     ABOUT
-                  </Link>
-                </li>
-                <li className="topListItem">
-                  <Link to="/" className="link">
-                    CONTACT
                   </Link>
                 </li>
                 <li className="topListItem">

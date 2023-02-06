@@ -7,7 +7,6 @@ import "./post.css"
 const Post = ({ post }) => {
     const PF = "http://localhost:5001/images/";
 
-    console.log(post.categories);
 
   return (
     <div className="post">
