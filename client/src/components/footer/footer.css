@@ -1,0 +1,33 @@
+.footer{
+  width:50%;
+  margin:100px auto 0px auto;
+  display:flex;
+  justify-content: center;
+}
+
+
+.footerTitleSm{
+    /* Font & Text */
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 28px;
+    text-decoration: none solid rgb(115, 115, 115);
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    vertical-align: baseline;
+    white-space: normal;
+    word-spacing: 0px;
+  
+    /* Color & Background */
+    background-attachment: scroll;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    color: rgb(115, 115, 115);
+  
+}
