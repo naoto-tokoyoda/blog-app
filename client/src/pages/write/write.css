@@ -23,7 +23,13 @@
   
   .writeForm {
     position: relative;
-    
+    width: 100%;
+  }
+
+  .writeFormGroup {
+    /* display: flex;
+    align-items: center; */
+    margin:50px 0px 50px 0px;
   }
 
   .catsInputContainer{
@@ -33,6 +39,7 @@
 }
 
 .catInputItem{
+  
     font-family: inherit;
     font-size: 20px;
     color:#63B6B7;
@@ -40,6 +47,7 @@
     border-radius: 20px;
     margin-right:0.75rem;
     margin-bottom:0.75rem;
+    
 }
 .catInputItem::first-letter{
     text-transform: uppercase;
@@ -61,7 +69,10 @@
     width:100%;
     border-radius: 5px;
     box-shadow: 0 0 5px rgb(0 0 0 / 15%);
-    padding:10px 0px 10px 10px;
+    padding:10px 10px 10px 10px;
+    
+    resize: none; 
+    overflow: auto;
 }
 
 .catsUserInput::placeholder {
@@ -69,11 +80,7 @@
     font-weight: 400;
   }
   
-  .writeFormGroup {
-    /* display: flex;
-    align-items: center; */
-    margin:50px 0px 50px 0px;
-  }
+  
   
   #fileInput{
     margin-bottom:30px;
@@ -97,7 +104,8 @@
     width:100%;
     border-radius: 5px;
     box-shadow: 0 0 5px rgb(0 0 0 / 15%);
-    padding:10px 0px 10px 10px;
+    padding:10px 10px 10px 10px;
+    resize:none;
   }
   
   .writeInput::placeholder {

@@ -30,7 +30,7 @@ const Login = () => {
   // console.log(isFetching);  
   return (
     <div className="login">
-      <span className="loginTitle">Login</span>
+      <span className="loginTitle">Admin Panel</span>
       <form className="loginForm" onSubmit={submitHandler}>
         <label>Username</label>
         <input

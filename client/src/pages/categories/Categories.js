@@ -16,6 +16,8 @@ const Categories = () => {
 
     getCats();
   }, [])
+
+
   
   
   

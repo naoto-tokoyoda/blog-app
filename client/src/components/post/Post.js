@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {Link} from "react-router-dom";
 
@@ -8,9 +8,16 @@ const Post = ({ post }) => {
     const PF = "http://localhost:5001/images/";
 
 
+    const anchorLinkHandler = () => {
+        window.scrollTo(0,0);
+    }
+    useEffect(() => {
+        anchorLinkHandler();
+    }, [])
+
   return (
     <div className="post">
-        <span className="postDate">
+        <span className="postDate" >
             {new Date(post.createdAt).toDateString()}
         </span>
         {
@@ -32,9 +39,11 @@ const Post = ({ post }) => {
             <ul className="postCats">
                 {
                     post.categories.map((cat) => (
-                        <Link to={`/?cat=${cat}`} className="link">
-                            <li className="postCat" >{cat}</li>
-                        </Link>
+                        <li className="postCat" >
+                            <Link to={`/?cat=${cat}`} className="link" onClick={anchorLinkHandler}>
+                                {cat}
+                            </Link>
+                        </li>
                     ))
                 }
 

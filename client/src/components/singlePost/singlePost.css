@@ -140,6 +140,8 @@ hr {
 }
 
 .singlePostDescInput {
+  width:auto;
+  height:800px;
   border: none;
   color: #666;
   font-size: 18px;
@@ -159,4 +161,5 @@ hr {
   cursor: pointer;
   align-self: flex-end;
   margin-top: 20px;
+  text-align: center;
 }

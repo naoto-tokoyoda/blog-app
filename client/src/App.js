@@ -21,20 +21,21 @@ function App() {
 
           <Route exact path="/" element={<Home />} />
 
-          <Route path="/register" element={user ? <Home /> : <Register />} />
+          {/* <Route path="/register" element={user ? <Home /> : <Register />} /> */}
 
-          <Route path="/login" element={user ? <Home /> : <Login />} />
+          <Route path="/admin-panel" element={user ? <Home /> : <Login />} />
 
-          <Route path="/write" element={user ? <Write /> :<Register />} />
+          {/* <Route path="/write" element={user ? <Write /> : <Register />} /> */}
+          <Route path="/write" element={user ? <Write /> : <Home />} />
 
-          <Route path="/settings" element={user ? <Settings /> : <Register />} />
+          {/* <Route path="/settings" element={user ? <Settings /> : <Register />} /> */}
+          <Route path="/settings" element={user ? <Settings /> : <Home />} />
 
           <Route path="/post/:postId" element={<Single />} />
 
           <Route path="/categories" element={<Categories />} />
           
           <Route path="/about" element={<About />} />
-
 
         </Routes>
     </Router>

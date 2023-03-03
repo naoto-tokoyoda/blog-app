@@ -51,14 +51,16 @@ export default function Write() {
   
 
     const putCatHandler = (e) => {
-        if(e.keyCode !== 32) return 
-        const value = e.target.value;
+      if(e.keyCode !== 32) return 
+      //avoid space key at the first letter
+      const value = e.target.value.trimStart();
 
-        if(!value.trim()) return
-        setCats([...cats, value])
-        
-        e.target.value = '';
-
+      //add all element
+      if(!value.trim()) return 
+      setCats([...cats, value]);
+      
+      e.target.value = "";
+      
     }
 
     const deleteCat = (index) => {
@@ -70,10 +72,6 @@ export default function Write() {
     <div className="writeWrapper">
       <div className="write">
         {/* box1 */}
-        {/* {file && (
-          <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
-        )} */}
-
         {
           !file ? <img className="writeNoImg" src={NoImage} alt="" />
           : <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
@@ -101,7 +99,6 @@ export default function Write() {
           </div>
 
           <div className="writeFormGroup">
-            <div className="catsInputContainer">
                 {
                     cats.map((cat, index) => (
                         <div className="catInputItem" key={index}>
@@ -110,8 +107,11 @@ export default function Write() {
                         </div>
                     ))
                 }
-                <input type="text" onKeyDown={putCatHandler} autoCapitalize={true} required={true}  className="catsUserInput" placeholder="Press space key after typing category..." />
-            </div>
+                <input type="text" onKeyDown={putCatHandler} autoCapitalize={true} disabled={cats.length >= 5 ? true : false} required={true}  className="catsUserInput" style={cats.length >= 5 ? {marginBottom:'15px'} : {}} placeholder="Press space key after typing category..."/>
+                {
+                  cats.length >= 5 ? (<span style={{ color: "red"}}>You can put only 5 categories</span>)
+                                   : <></> 
+                }
           </div>
 
           <div className="writeFormGroup">
@@ -121,6 +121,7 @@ export default function Write() {
               className="writeInput writeText"
               onChange={e=>setDesc(e.target.value)}
               required={true}
+              
             ></textarea>
           </div>
           

@@ -11,7 +11,7 @@ import { FacebookShareButton, FacebookIcon,
 
 import "./singlePost.css";
 
-
+// for edit article, you can use this --> https://uiwjs.github.io/react-md-editor/
 
 export default function SinglePost() {
   const location = useLocation();

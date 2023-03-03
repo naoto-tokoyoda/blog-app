@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import './topbar.css'
 import { Context } from '../../context/Context';
+import NoImage from "../../images/noImage.jpeg";
 
 
 const Topbar = () => {
@@ -29,7 +30,7 @@ const Topbar = () => {
             <ul className="topList">
                 <li className="topListItem">
                   <Link to="/" className="link">
-                    HOME
+                    NAOTO'S BLOG
                   </Link>
                 </li>
                 <li className="topListItem">
@@ -67,22 +68,11 @@ const Topbar = () => {
             <Link to="/settings">
               <img className="topImg" src={PF + user.profilePic} alt="" />
             </Link>
+
           ) : (
-            <ul className="topList">
-              <li className="topListItem">
-                <Link className="link" to="/login">
-                  LOGIN
-                </Link>
-              </li>
-              {/* <li className="topListItem">
-                <Link className="link" to="/register">
-                  REGISTER
-                </Link>
-              </li> */}
-            </ul>
+            <></>
           )
-          }
-            {/* <i className="topSearchIcon fa-solid fa-magnifying-glass"></i> */}
+        }
         </div>
     </div>
   )
