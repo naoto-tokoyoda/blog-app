@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import "./categories.css"
+import { axiosInstance } from '../../config';
 const Categories = () => {
 
     const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await axiosInstance.get("/categories");
       setCats(res.data);
       console.log(res);
     }
