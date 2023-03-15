@@ -12,6 +12,7 @@ export default function Settings() {
 
   const { user, dispatch } = useContext(Context);
   const PF = "https://naoto-blog.herokuapp.com/images/"
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
