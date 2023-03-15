@@ -19,7 +19,7 @@ export default function SinglePost() {
   const shareUrl = location.pathname;
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5001/images/";
+  const PF = "https://naoto-blog.herokuapp.com/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
