@@ -1,9 +1,8 @@
 import { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios"
 import { Context } from "../../context/Context";
 
 import "./login.css"
+import { axiosInstance } from "../../config";
 
 const Login = () => {
   const userRef = useRef();
@@ -16,7 +15,7 @@ const Login = () => {
     setError(false);
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", {
+      const res = await axiosInstance.post("/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });

@@ -10,6 +10,7 @@ import { FacebookShareButton, FacebookIcon,
 } from "react-share";
 
 import "./singlePost.css";
+import { axiosInstance } from "../../config";
 
 // for edit article, you can use this --> https://uiwjs.github.io/react-md-editor/
 
@@ -30,7 +31,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axiosInstance.get("/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -42,7 +43,7 @@ export default function SinglePost() {
 
   const deleteHandler = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`, {
+      await axiosInstance.delete(`/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -51,7 +52,7 @@ export default function SinglePost() {
 
   const updateHandler = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axiosInstance.put(`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,

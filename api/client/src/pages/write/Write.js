@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import "./write.css";
-import axios from "axios";
 import { Context } from "../../context/Context";
 import NoImage from "../../images/noImage.jpeg"
+import { axiosInstance } from "../../config";
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -28,14 +28,14 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
+        await axiosInstance.post("/upload", data);
       } catch (err) {}
     }
 
     // you can search on youtube like how to store array in the mongo fro mreact to node 
     if(cats){
       try {
-        await axios.post("/categories", {categories: cats});
+        await axiosInstance.post("/categories", {categories: cats});
       } catch (err) {
         console.log(err);
       }
@@ -43,7 +43,7 @@ export default function Write() {
 
 
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axiosInstance.post("/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 import Header from '../../components/header/Header'
 import Posts from '../../components/posts/Posts'
@@ -9,6 +8,7 @@ import Footer from '../../components/footer/Footer';
 import Pagination from '../../components/pagination/Pagination';
 
 import "./home.css"
+import { axiosInstance } from '../../config';
 
 
 
@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/posts" + search);
+      const res = await axiosInstance.get("/posts" + search);
       // const res = await axios({
       //   url: "http://localhost:3000/posts",
       //   method: 'GET',
