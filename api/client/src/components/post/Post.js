@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import "./post.css"
 
 const Post = ({ post }) => {
-    const PF = "http://localhost:5001/images/";
+    const PF = "https://naoto-blog.herokuapp.com/images/";
 
 
     const anchorLinkHandler = () => {
