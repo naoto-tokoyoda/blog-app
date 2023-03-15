@@ -9,7 +9,7 @@ import NoImage from "../../images/noImage.jpeg";
 
 const Topbar = () => {
   const {user, dispatch} = useContext(Context);
-  const PF = "http://localhost:5001/images/"
+  const PF = "https://naoto-blog.herokuapp.com/images/"
 
 
   const logoutHandler = () => {
