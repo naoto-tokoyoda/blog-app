@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
@@ -34,10 +35,20 @@ mongoose
     res.status(200).json("file has been uploaded");
   })
 
+// Enable CORS for all routes
+const corsOptions = {
+  origin: ['http://localhost:5001', 'https://naoto-blog.herokuapp.com/']
+};
+
+app.use(cors(corsOptions));
+  
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
+
+
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 app.get('*', (req, res) => {
