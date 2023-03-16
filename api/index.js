@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const cors = require('cors');
+const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
@@ -37,7 +37,7 @@ mongoose
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: ['http://localhost:5001', 'https://naoto-blog.herokuapp.com/']
+  origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
 };
 
 app.use(cors(corsOptions));
