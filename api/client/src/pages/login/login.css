@@ -1,25 +1,23 @@
 .login {
-  width:100%;
+  width:90%;
   height:50vh;
     /* height: calc(100vh - 50px); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
-  background-size: cover; */
+
+  margin:0 auto;
 }
 
 .loginTitle {
+  width:375px;
   font-size: 50px;
+  
 }
 
 .loginForm {
-    width:20%;
+    width:375px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;

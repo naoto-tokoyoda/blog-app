@@ -4,7 +4,7 @@
   }
   
 .write{
-  width:60%;
+  width:90%;
   margin:0 auto;
 }
 .writeNoImg{
@@ -29,6 +29,7 @@
   .writeFormGroup {
     /* display: flex;
     align-items: center; */
+    width: 100%;
     margin:50px 0px 50px 0px;
   }
 
@@ -45,7 +46,6 @@
     color:#63B6B7;
     display:inline-block;
     border-radius: 20px;
-    margin-right:0.75rem;
     margin-bottom:0.75rem;
     
 }
@@ -104,7 +104,7 @@
     width:100%;
     border-radius: 5px;
     box-shadow: 0 0 5px rgb(0 0 0 / 15%);
-    padding:10px 10px 10px 10px;
+    padding:10px;
     resize:none;
   }
   

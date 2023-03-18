@@ -8,7 +8,6 @@ const Header = () => {
           <span className="headerTitleLg">Exploring the Unknown by Web Dev into Blogging</span>
           <span className="headerTitleSm">Techs, Trip, Food...</span>
         </div>
-       
     </div>
   )
 }

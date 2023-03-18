@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import "./categories.css"
 import { axiosInstance } from '../../config';
+import Footer from '../../components/footer/Footer';
 const Categories = () => {
 
     const [cats, setCats] = useState([]);
@@ -23,6 +24,7 @@ const Categories = () => {
   
   
   return (
+    <>
     <div className="categories">
 
         <div className="categoryItems">
@@ -49,7 +51,11 @@ const Categories = () => {
                 </ul>
             </div> 
         </div>
+        <Footer />
+
     </div>
+
+    </>
   )
 }
 

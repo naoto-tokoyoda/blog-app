@@ -53,12 +53,6 @@ const Login = () => {
       </form>
 
       {error && <span style={{color: "red", marginTop: "5px"}}>Username and password do not match.</span>  }
-
-      {/* <button className="loginRegisterButton">
-        <Link className="link" to="/register">
-          Register
-        </Link>
-      </button> */}
     </div>
   )
 }

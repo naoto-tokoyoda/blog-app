@@ -9,6 +9,8 @@ import { FacebookShareButton, FacebookIcon,
          TwitterShareButton, TwitterIcon
 } from "react-share";
 
+import Footer from "../footer/Footer";
+
 import "./singlePost.css";
 import { axiosInstance } from "../../config";
 
@@ -16,7 +18,7 @@ import { axiosInstance } from "../../config";
 
 export default function SinglePost() {
   const location = useLocation();
-  const shareUrl = location.pathname;
+  const shareUrl = window.location.href;
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const PF = "https://naoto-blog.herokuapp.com/images/";
@@ -27,7 +29,6 @@ export default function SinglePost() {
   const [updateMode, setUpdateMode] = useState(false);
 
 
-  console.log(post);
 
   useEffect(() => {
     const getPost = async () => {
@@ -149,6 +150,7 @@ export default function SinglePost() {
           </button>
         )}
       </div>
+     <Footer/>
     </div>
   );
 }

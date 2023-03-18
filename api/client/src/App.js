@@ -12,33 +12,36 @@ import { useContext } from "react";
 import { Context } from "./context/Context";
 import { About } from "./pages/about/About";
 
+import "./app.css"
+
 function App() {
   const {user} = useContext(Context);
   return (
-    <Router>
-      <Topbar />
-        <Routes>
+    <div className="app" >
+      <Router >
+        <Topbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
 
-          <Route exact path="/" element={<Home />} />
+            {/* <Route path="/register" element={user ? <Home /> : <Register />} /> */}
 
-          {/* <Route path="/register" element={user ? <Home /> : <Register />} /> */}
+            <Route path="/admin-panel" element={user ? <Home /> : <Login />} />
 
-          <Route path="/admin-panel" element={user ? <Home /> : <Login />} />
+            {/* <Route path="/write" element={user ? <Write /> : <Register />} /> */}
+            <Route path="/write" element={user ? <Write /> : <Home />} />
 
-          {/* <Route path="/write" element={user ? <Write /> : <Register />} /> */}
-          <Route path="/write" element={user ? <Write /> : <Home />} />
+            {/* <Route path="/settings" element={user ? <Settings /> : <Register />} /> */}
+            <Route path="/settings" element={user ? <Settings /> : <Home />} />
 
-          {/* <Route path="/settings" element={user ? <Settings /> : <Register />} /> */}
-          <Route path="/settings" element={user ? <Settings /> : <Home />} />
+            <Route path="/post/:postId" element={<Single />} />
 
-          <Route path="/post/:postId" element={<Single />} />
+            <Route path="/categories" element={<Categories />} />
+            
+            {/* <Route path="/about" element={<About />} /> */}
 
-          <Route path="/categories" element={<Categories />} />
-          
-          <Route path="/about" element={<About />} />
-
-        </Routes>
-    </Router>
+          </Routes>
+      </Router>
+    </div>
   );
 }
 

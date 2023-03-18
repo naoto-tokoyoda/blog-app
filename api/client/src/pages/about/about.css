@@ -1,7 +1,11 @@
 .about{
-    width:60%;
+    width:90%;
+    height:75vh;
     margin: 20px auto;
-    
+
+    display:flex;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 .aboutTitle h1{
@@ -40,8 +44,9 @@
 }
 
 .aboutProfileImg{
-    width:300px;
+    width:200px;
     height:auto;
+    margin-bottom:50px;
 }
 
 .aboutProfileIntroduction p{

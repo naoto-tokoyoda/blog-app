@@ -23,11 +23,6 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axiosInstance.get("/posts" + search);
-      // const res = await axios({
-      //   url: "http://localhost:3000/posts",
-      //   method: 'GET',
-      // },
-
       //sort posts ordered by createdAt. Whenever user created post, its post will be at the top.
       const sortedData = res.data.sort((a,b) => a.createAt < b.createAt ? 1 : -1);
       setPosts(sortedData);
@@ -45,7 +40,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="home">
+      <div className="home" >
         {
           posts.length > 0 ? (
           <>

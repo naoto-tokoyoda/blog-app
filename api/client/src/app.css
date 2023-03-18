@@ -1,0 +1,8 @@
+.app{
+/* Add any desired max-width for the content */
+  max-width: 1024px;
+  min-width: 375px;
+  /* Set the width to 100% to make it responsive */
+  width: 100%;
+  margin:0 auto;
+}
