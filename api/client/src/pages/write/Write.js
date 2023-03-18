@@ -4,6 +4,9 @@ import { Context } from "../../context/Context";
 import NoImage from "../../images/noImage.jpeg"
 import { axiosInstance } from "../../config";
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -11,7 +14,7 @@ export default function Write() {
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
 
-  
+console.log(desc);  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,14 +118,15 @@ export default function Write() {
           </div>
 
           <div className="writeFormGroup">
-            <textarea
+            {/* <textarea
               placeholder="Tell your story..."
               type="text"
               className="writeInput writeText"
               onChange={e=>setDesc(e.target.value)}
               required={true}
               
-            ></textarea>
+            ></textarea> */}
+            <ReactQuill theme="snow" className="editor" value={desc} onChange={setDesc} />
           </div>
           
           <div className="writeFormGroup">

@@ -35,7 +35,7 @@ mongoose
     res.status(200).json("file has been uploaded");
   })
 
-// Enable CORS for all routes
+// // Enable CORS for all routes
 // const corsOptions = {
 //   origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
 // };
