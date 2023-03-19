@@ -36,11 +36,11 @@ mongoose
   })
 
 // // Enable CORS for all routes
-// const corsOptions = {
-//   origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
-// };
+const corsOptions = {
+  origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
   
 
 app.use("/api/auth", authRoute);
