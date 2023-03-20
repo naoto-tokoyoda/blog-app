@@ -1,0 +1,54 @@
+  /* Style the wrapper div for the NotFoundPage component */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+  
+  /* Style the title of the NotFoundPage */
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* Style the description of the NotFoundPage */
+  .description {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Style the link to go back to the homepage */
+  .styled-link {
+    margin-top: 2rem;
+    color: #ffffff;
+    background-color: #62B6B7;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  /* Style the hover effect for the link */
+  .styled-link:hover {
+    background-color:#439A97;
+  }
+  
+  /* .loginButton {
+    margin-top: 20px;
+    cursor: pointer;
+    
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .loginButton:hover{
+    background-color:#439A97;
+    
+  } */

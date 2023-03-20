@@ -4,6 +4,10 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 
+import ReactQuill from "react-quill";
+
+import DOMPurify from "dompurify";
+
 import { FacebookShareButton, FacebookIcon,
          LinkedinShareButton, LinkedinIcon,
          TwitterShareButton, TwitterIcon
@@ -27,7 +31,6 @@ export default function SinglePost() {
   const [desc, setDesc] = useState("");
   const [cats, setCats] = useState([]);
   const [updateMode, setUpdateMode] = useState(false);
-
 
 
   useEffect(() => {
@@ -58,9 +61,18 @@ export default function SinglePost() {
         title,
         desc,
       });
-      setUpdateMode(false)
+      setUpdateMode(false);
+      // Update the post object to reflect the changes
+      setPost((prevPost) => ({ ...prevPost, title, content: desc }));
     } catch (err) {}
   };
+
+
+  // This function sanitizes the input HTML and returns a clean version
+  function sanitizeHTML(html) {
+    return DOMPurify.sanitize(html);
+  }
+
 
   return (
     <div className="singlePost">
@@ -136,13 +148,17 @@ export default function SinglePost() {
         <hr />
         
         {updateMode ? (
-          <textarea
-            className="singlePostDescInput"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          />
+          // <textarea
+          //   className="singlePostDescInput"
+          //   value={desc}
+          //   onChange={(e) => setDesc(e.target.value)}
+          // />
+          // <ReactQuill theme="snow" className="singlePostDescInput" value={desc} onChange={(e) => setDesc(e.target.value)} />
+          <ReactQuill theme="snow" className="singlePostDescInput" value={desc} onChange={setDesc} />
+          
         ) : (
-          <p className="singlePostDesc">{desc}</p>
+          // <p className="singlePostDesc">{desc}</p>
+          <p className="singlePostDesc" dangerouslySetInnerHTML={{ __html: sanitizeHTML(desc) }}></p>
         )}
         {updateMode && (
           <button className="singlePostButton" onClick={updateHandler}>

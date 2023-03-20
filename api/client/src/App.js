@@ -6,16 +6,20 @@ import Settings from "./pages/settings/Settings"
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Categories from "./pages/categories/Categories";
+import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
  
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "./context/Context";
 import { About } from "./pages/about/About";
 
+
+
 import "./app.css"
 
 function App() {
   const {user} = useContext(Context);
+  
   return (
     <div className="app" >
       <Router >
@@ -38,6 +42,8 @@ function App() {
             <Route path="/categories" element={<Categories />} />
             
             {/* <Route path="/about" element={<About />} /> */}
+
+            <Route path="*" element={<NotFoundPage/>} />
 
           </Routes>
       </Router>

@@ -15,6 +15,12 @@ const Post = ({ post }) => {
         anchorLinkHandler();
     }, [])
 
+      // This function removes HTML tags from the input string
+      function stripHTMLTags(html) {
+        return html.replace(/<\/?[^>]+(>|$)/g, "");
+      }
+
+
   return (
     <div className="post">
         <span className="postDate" >
@@ -53,9 +59,10 @@ const Post = ({ post }) => {
             <hr />
             
         </div>
-        <p className="postDesc">
+        {/* <p className="postDesc">
             {post.desc}
-        </p>
+        </p> */}
+        <p className="postDesc" >{stripHTMLTags(post.desc)}</p>
         <div className="readMoreWrapper">
             <Link to={`/post/${post._id}`} className="link">
                 <div className="readmore">

@@ -126,6 +126,7 @@ console.log(desc);
               required={true}
               
             ></textarea> */}
+            {/* <ReactQuill theme="snow" className="editor" onChange={e=>setDesc(e.target.value)} required={true}/> */}
             <ReactQuill theme="snow" className="editor" value={desc} onChange={setDesc} />
           </div>
           
