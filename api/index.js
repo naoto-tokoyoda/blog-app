@@ -41,7 +41,7 @@ const corsOptions = {
 };
 
 //when you use localhost
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
   
 
 app.use("/api/auth", authRoute);

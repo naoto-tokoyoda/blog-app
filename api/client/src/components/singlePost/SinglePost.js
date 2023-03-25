@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
@@ -18,11 +17,11 @@ import Footer from "../footer/Footer";
 import "./singlePost.css";
 import { axiosInstance } from "../../config";
 
-// for edit article, you can use this --> https://uiwjs.github.io/react-md-editor/
 
 export default function SinglePost() {
   const location = useLocation();
-  const shareUrl = window.location.href;
+  // const shareUrl = window.location.href;
+  const shareUrl = "google.com";
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const PF = "https://naoto-blog.herokuapp.com/images/";
@@ -40,7 +39,6 @@ export default function SinglePost() {
       setTitle(res.data.title);
       setDesc(res.data.desc);
       setCats(res.data.categories);
-      console.log(res);
     };
     getPost();
   }, [path]);
@@ -127,37 +125,28 @@ export default function SinglePost() {
         
 
         <div className="singlePostSocialMediaIcons">
-          <FacebookShareButton url={shareUrl}>
+          <FacebookShareButton url={shareUrl} quote={title}>
             {/* <i className=" fa-brands fa-square-facebook"></i> */}
             <FacebookIcon  className="socialMediaIcon"/>
           </FacebookShareButton>
 
-          <TwitterShareButton url={shareUrl}>
+          <TwitterShareButton url={shareUrl} quote={title}>
             {/* <i className=" fa-brands fa-square-twitter"></i> */}
             <TwitterIcon className="socialMediaIcon" />
           </TwitterShareButton>
 
-          <LinkedinShareButton url={shareUrl}>
+          <LinkedinShareButton url={shareUrl} quote={title}>
             {/* <i className=" fa-brands fa-linkedin"></i> */}
             <LinkedinIcon className="socialMediaIcon" />
           </LinkedinShareButton>
-            
-            
             
         </div>
         <hr />
         
         {updateMode ? (
-          // <textarea
-          //   className="singlePostDescInput"
-          //   value={desc}
-          //   onChange={(e) => setDesc(e.target.value)}
-          // />
-          // <ReactQuill theme="snow" className="singlePostDescInput" value={desc} onChange={(e) => setDesc(e.target.value)} />
           <ReactQuill theme="snow" className="singlePostDescInput" value={desc} onChange={setDesc} />
           
         ) : (
-          // <p className="singlePostDesc">{desc}</p>
           <p className="singlePostDesc" dangerouslySetInnerHTML={{ __html: sanitizeHTML(desc) }}></p>
         )}
         {updateMode && (
