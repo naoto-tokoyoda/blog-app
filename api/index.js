@@ -40,7 +40,8 @@ const corsOptions = {
   origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
 };
 
-app.use(cors(corsOptions));
+//when you use localhost
+// app.use(cors(corsOptions));
   
 
 app.use("/api/auth", authRoute);

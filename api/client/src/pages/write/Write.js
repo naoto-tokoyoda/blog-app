@@ -138,15 +138,6 @@ function capitalizeFirstLetter(string) {
           </div>
 
           <div className="writeFormGroup">
-            {/* <textarea
-              placeholder="Tell your story..."
-              type="text"
-              className="writeInput writeText"
-              onChange={e=>setDesc(e.target.value)}
-              required={true}
-              
-            ></textarea> */}
-            {/* <ReactQuill theme="snow" className="editor" onChange={e=>setDesc(e.target.value)} required={true}/> */}
             <ReactQuill theme="snow" className="editor" value={desc} onChange={setDesc} />
           </div>
           
