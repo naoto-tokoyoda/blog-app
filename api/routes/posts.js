@@ -1,11 +1,14 @@
 const router = require("express").Router();
 const User = require("../models/User.js");
 const Post = require("../models/Post.js");
+const Category = require("../models/Category.js");
 const bcrypt = require("bcrypt");
 
 //Create post
 router.post("/", async (req, res) => {
     const newPost = new Post(req.body);
+    
+    //save post
     try {
       const savedPost = await newPost.save();
       res.status(200).json(savedPost);
@@ -13,6 +16,8 @@ router.post("/", async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+  
 
 //update post
 router.put("/:id", async (req,res) => {

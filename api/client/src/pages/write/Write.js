@@ -15,6 +15,9 @@ export default function Write() {
   const { user } = useContext(Context);
 
 console.log(desc);  
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +27,9 @@ console.log(desc);
       desc,
       categories: cats,
     };
+
+    console.log(newPost);
+
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -32,18 +38,32 @@ console.log(desc);
       newPost.photo = filename;
       try {
         await axiosInstance.post("/upload", data);
-      } catch (err) {}
-    }
-
-    // you can search on youtube like how to store array in the mongo fro mreact to node 
-    if(cats){
-      try {
-        await axiosInstance.post("/categories", {categories: cats});
       } catch (err) {
-        console.log(err);
+        console.error("Error in /upload route:", err);
       }
     }
 
+    
+    if (cats) {
+      console.log("Sending categories data:", { name: cats });
+    
+      // Log request headers and body
+      console.log("Request headers:", axiosInstance.defaults.headers);
+      console.log("Request body:", JSON.stringify({ name: cats }));
+
+      // capitalize First Letter in cats array
+      const capitalizedCats = cats.map(capitalizeFirstLetter);
+    
+      try {
+        // console.log("Full URL for /categories:", axiosInstance.defaults.baseURL + "categories");
+        // const response = await axiosInstance.post("/categories", { name: capitalizedCats });
+        await axiosInstance.post("/categories", { name: capitalizedCats });
+        // console.log("Response from /categories:", response);
+      } catch (err) {
+        console.error("Error in /categories route:", err);
+      }
+    }
+    
 
     try {
       const res = await axiosInstance.post("/posts", newPost);

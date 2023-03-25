@@ -21,21 +21,21 @@ mongoose
   .then(console.log("MongoDB is connected"))
   .catch(( err ) => console.log(err));
 
-  const storage = multer.diskStorage({
-    destination:(req, file, cb) => {
-      cb(null,"images");
-    },
-    filename:(req, file, cb) => {
-      cb(null,req.body.name);
-    }
-  });
+const storage = multer.diskStorage({
+  destination:(req, file, cb) => {
+    cb(null,"images");
+  },
+  filename:(req, file, cb) => {
+    cb(null,req.body.name);
+  }
+});
 
-  const upload = multer({storage : storage})
-  app.post("/api/upload", upload.single("file"), (req,res) => {
-    res.status(200).json("file has been uploaded");
-  })
+const upload = multer({storage : storage})
+app.post("/api/upload", upload.single("file"), (req,res) => {
+  res.status(200).json("file has been uploaded");
+})
 
-// // Enable CORS for all routes
+// Enable CORS for all routes
 const corsOptions = {
   origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
 };
