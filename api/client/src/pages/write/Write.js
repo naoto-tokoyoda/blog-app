@@ -14,11 +14,6 @@ export default function Write() {
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
 
-console.log(desc);  
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -28,7 +23,6 @@ function capitalizeFirstLetter(string) {
       categories: cats,
     };
 
-    console.log(newPost);
 
     if (file) {
       const data = new FormData();
@@ -48,16 +42,16 @@ function capitalizeFirstLetter(string) {
       console.log("Sending categories data:", { name: cats });
     
       // Log request headers and body
-      console.log("Request headers:", axiosInstance.defaults.headers);
-      console.log("Request body:", JSON.stringify({ name: cats }));
+      // console.log("Request headers:", axiosInstance.defaults.headers);
+      // console.log("Request body:", JSON.stringify({ name: cats }));
 
-      // capitalize First Letter in cats array
-      const capitalizedCats = cats.map(capitalizeFirstLetter);
+      // lowercase all letter in cats array
+      const lowerCaseCats = cats.map(item => item.toLowerCase());
     
       try {
         // console.log("Full URL for /categories:", axiosInstance.defaults.baseURL + "categories");
         // const response = await axiosInstance.post("/categories", { name: capitalizedCats });
-        await axiosInstance.post("/categories", { name: capitalizedCats });
+        await axiosInstance.post("/categories", { name: lowerCaseCats });
         // console.log("Response from /categories:", response);
       } catch (err) {
         console.error("Error in /categories route:", err);

@@ -56,7 +56,7 @@ const Home = () => {
            <Footer />
           </>
           ) : (
-          <h2>I am preparing post!</h2>
+          <h2>Found no post</h2>
           
         )}
         

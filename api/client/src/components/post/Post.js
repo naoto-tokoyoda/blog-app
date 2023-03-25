@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react'
-
+import React from 'react'
 import {Link} from "react-router-dom";
 
 import "./post.css"
@@ -7,19 +6,15 @@ import "./post.css"
 const Post = ({ post }) => {
     const PF = "https://naoto-blog.herokuapp.com/images/";
 
-
     const anchorLinkHandler = () => {
         window.scrollTo(0,0);
     }
-    useEffect(() => {
-        anchorLinkHandler();
-    }, [])
-
-      // This function removes HTML tags from the input string
-      function stripHTMLTags(html) {
-        return html.replace(/<\/?[^>]+(>|$)/g, "");
-      }
-
+    
+    // This function removes HTML tags from the input string
+    function stripHTMLTags(html) {
+    return html.replace(/<\/?[^>]+(>|$)/g, "");
+    }
+      
 
   return (
     <div className="post">
@@ -52,16 +47,9 @@ const Post = ({ post }) => {
                         </li>
                     ))
                 }
-
             </ul>
-                
-
             <hr />
-            
         </div>
-        {/* <p className="postDesc">
-            {post.desc}
-        </p> */}
         <p className="postDesc" >{stripHTMLTags(post.desc)}</p>
         <div className="readMoreWrapper">
             <Link to={`/post/${post._id}`} className="link">

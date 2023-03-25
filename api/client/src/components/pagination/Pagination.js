@@ -30,9 +30,6 @@ const Pagination = ({ totalPosts, postsPerPage, setCurrentPage, currentPage }) =
         anchorLinkHandler();
     }, [])
     
-
-    console.log(currentPage);
-    
     return (
         <div className='pagination'>
             <button
