@@ -4,11 +4,11 @@ const Post = require("../models/Post.js");
 const Category = require("../models/Category.js");
 const bcrypt = require("bcrypt");
 
-//Create post
+// Route for creating a post
 router.post("/", async (req, res) => {
     const newPost = new Post(req.body);
     
-    //save post
+    // Save the post to the database
     try {
       const savedPost = await newPost.save();
       res.status(200).json(savedPost);
@@ -19,10 +19,12 @@ router.post("/", async (req, res) => {
 
   
 
-//update post
+// Route for updating a post
 router.put("/:id", async (req,res) => {
     try {
         const post = await Post.findById(req.params.id);
+
+        // Check if the post belongs to the user
         if(post.username === req.body.username){
             try {
                 const updatedPost = await Post.findByIdAndUpdate(
@@ -46,10 +48,12 @@ router.put("/:id", async (req,res) => {
     }
 });
 
-//Delete post
+// Route for deleting a post
 router.delete("/:id", async (req,res) => {
     try {
         const post = await Post.findById(req.params.id);
+
+        // Check if the post belongs to the user
         if(post.username === req.body.username){
             try{
                 await post.delete();
@@ -65,7 +69,7 @@ router.delete("/:id", async (req,res) => {
     }
 });
 
-//GET post
+// Route for getting a post by ID
 router.get("/:id", async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
@@ -75,7 +79,7 @@ router.get("/:id", async (req, res) => {
     }
 })
 
-//Get all posts
+// Route for getting all posts, or posts by a specific user or category
 router.get("/", async (req, res) => {
     const username = req.query.user;
     const catName = req.query.cat;
@@ -83,8 +87,10 @@ router.get("/", async (req, res) => {
     try {
         let posts;
         if(username){
+            // Get posts by the specified user
             posts = await Post.find({ username });
         } else if(catName){
+            // Get posts by the specified category
             posts = await Post.find({
                 categories:{
                     $in: [catName],
@@ -92,7 +98,6 @@ router.get("/", async (req, res) => {
             });
         } else {
             posts = await Post.find();
-            
         }
         res.status(200).json(posts);
     } catch (error) {

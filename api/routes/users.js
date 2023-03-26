@@ -3,15 +3,19 @@ const User = require("../models/User.js");
 const Post = require("../models/Post.js");
 const bcrypt = require("bcrypt");
 
-//UPDATE
+// Route for updating a user
 router.put("/:id", async (req,res) => {
 
+    
     if(req.body.userId === req.params.id){
+        // If the password needs to be updated, hash it
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);
         }
+
         try {
+            // Update the user in the database
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.id, 
                 {
@@ -32,7 +36,7 @@ router.put("/:id", async (req,res) => {
    
 });
 
-//LOGIN
+// Route for logging in
 router.post("/login", async (req, res) => {
 
     try {
@@ -52,7 +56,7 @@ router.post("/login", async (req, res) => {
 
 });
 
-//DELETE
+// Route for deleting a user
 router.delete("/:id", async (req,res) => {
 
     if(req.body.userId === req.params.id){
@@ -76,7 +80,7 @@ router.delete("/:id", async (req,res) => {
    
 });
 
-//GET USER
+// Route for getting a user by ID
 router.get("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
