@@ -20,8 +20,7 @@ import { axiosInstance } from "../../config";
 
 export default function SinglePost() {
   const location = useLocation();
-  // const shareUrl = window.location.href;
-  const shareUrl = "google.com";
+  const shareUrl = window.location.href;
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const PF = "https://naoto-blog.herokuapp.com/images/";
