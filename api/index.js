@@ -37,10 +37,10 @@ app.post("/api/upload", upload.single("file"), (req,res) => {
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: ['http://localhost:3001', 'https://naoto-blog.herokuapp.com/']
+  origin: [process.env.NODE_APP_API_URL, process.env.NODE_APP_PROD_API_URL]
 };
 
-//when you use localhost
+
 app.use(cors(corsOptions));
   
 
