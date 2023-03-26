@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import "./post.css"
 
 const Post = ({ post }) => {
-    const PF = "https://naoto-blog.herokuapp.com/images/";
+    const PF = "https://now-dev.herokuapp.com/images/";
 
     const anchorLinkHandler = () => {
         window.scrollTo(0,0);

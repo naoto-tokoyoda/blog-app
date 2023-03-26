@@ -23,7 +23,7 @@ export default function SinglePost() {
   const shareUrl = window.location.href;
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "https://naoto-blog.herokuapp.com/images/";
+  const PF = "https://now-dev.herokuapp.com/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");

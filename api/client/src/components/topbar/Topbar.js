@@ -8,7 +8,6 @@ import { Context } from '../../context/Context';
 
 const Topbar = () => {
   const {user, dispatch} = useContext(Context);
-  const PF = "https://naoto-blog.herokuapp.com/images/"
   const navigate = useNavigate();
 
   const logoutHandler = () => {
@@ -28,11 +27,6 @@ const Topbar = () => {
                     NOW.DEV
                   </Link>
                 </li>
-                {/* <li className="topListItem">
-                  <Link to="/about" className="link">
-                    ABOUT
-                  </Link>
-                </li> */}
                 <li className="topListItem">
                   <Link to="/categories" className="link">
                     CATEGORIES
