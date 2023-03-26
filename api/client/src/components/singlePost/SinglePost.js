@@ -51,17 +51,31 @@ export default function SinglePost() {
     } catch (err) {}
   };
 
+
   const updateHandler = async () => {
     try {
       await axiosInstance.put(`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
+        categories: cats,
       });
       setUpdateMode(false);
-      // Update the post object to reflect the changes
-      setPost((prevPost) => ({ ...prevPost, title, content: desc }));
+     // Update the post object to reflect the changes
+    setPost((prevPost) => ({ ...prevPost, title, content: desc, categories: cats }));
     } catch (err) {}
+  };
+
+  const putCatHandler = (e) => {
+    if (e.keyCode !== 32) return;
+    const value = e.target.value.trimStart();
+    if (!value.trim()) return;
+    setCats([...cats, value]);
+    e.target.value = "";
+  };
+
+  const deleteCat = (index) => {
+    setCats(cats.filter((cat, i) => i !== index));
   };
 
 
@@ -88,7 +102,6 @@ export default function SinglePost() {
             autoFocus={true}
             onChange={(e) => setTitle(e.target.value)}
           />
-          
         ) : (
           <h1 className="singlePostTitle">
             {title}
@@ -102,59 +115,96 @@ export default function SinglePost() {
                   className="singlePostIcon far fa-trash-alt"
                   onClick={deleteHandler}
                 ></i>
-                
               </div>
             )}
           </h1>
         )}
-
-        <div className="singlePostCategoriesLists">
-          {
-            cats.map(( cat ) => (
+        <div
+          className="singlePostCategoriesLists"
+          style={updateMode ? { flexDirection: "column" } : {}}
+        >
+          {updateMode ? (
+            <>
+              <div className="singlePostCat">
+                {cats.map((cat, index) => (
+                  <div className="postCat" key={index}>
+                    <span className="text">{cat}</span>
+                    <span className="close" onClick={() => deleteCat(index)}>
+                      &times;
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="singlePostcatsUserInput">
+                <input
+                  type="text"
+                  onKeyDown={putCatHandler}
+                  autoCapitalize="true"
+                  disabled={cats.length >= 5 ? true : false}
+                  className="catsUserInput"
+                  style={
+                    cats.length >= 5 ? { marginBottom: "15px" } : {}
+                  }
+                  placeholder="Press space key after typing category..."
+                />
+                {cats.length >= 5 ? (
+                  <span style={{ color: "red" }}>
+                    You can put only 5 categories
+                  </span>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </>
+          ) : (
+            cats.map((cat) => (
               <li className="postCat">
                 <Link to={`/?cat=${cat}`} className="link">
                   {cat}
                 </Link>
               </li>
             ))
-          }
+          )}
         </div>
-
-            
-        
-
-        <div className="singlePostSocialMediaIcons">
-          <FacebookShareButton url={shareUrl} quote={title}>
-            {/* <i className=" fa-brands fa-square-facebook"></i> */}
-            <FacebookIcon  className="socialMediaIcon"/>
-          </FacebookShareButton>
-
-          <TwitterShareButton url={shareUrl} quote={title}>
-            {/* <i className=" fa-brands fa-square-twitter"></i> */}
-            <TwitterIcon className="socialMediaIcon" />
-          </TwitterShareButton>
-
-          <LinkedinShareButton url={shareUrl} quote={title}>
-            {/* <i className=" fa-brands fa-linkedin"></i> */}
-            <LinkedinIcon className="socialMediaIcon" />
-          </LinkedinShareButton>
-            
-        </div>
-        <hr />
-        
         {updateMode ? (
-          <ReactQuill theme="snow" className="singlePostDescInput" value={desc} onChange={setDesc} />
-          
+          <div style={{ marginBottom: "30px" }}></div>
         ) : (
-          <p className="singlePostDesc" dangerouslySetInnerHTML={{ __html: sanitizeHTML(desc) }}></p>
+          <div className="singlePostSocialMediaIcons">
+            <FacebookShareButton url={shareUrl} quote={title}>
+              <FacebookIcon className="socialMediaIcon" />
+            </FacebookShareButton>
+            <TwitterShareButton url={shareUrl} quote={title}>
+              <TwitterIcon className="socialMediaIcon" />
+            </TwitterShareButton>
+            <LinkedinShareButton url={shareUrl} quote={title}>
+              <LinkedinIcon className="socialMediaIcon" />
+            </LinkedinShareButton>
+            <hr />
+          </div>
+        )}
+        {updateMode ? (
+          <ReactQuill
+            theme="snow"
+            className="singlePostDescInput"
+            value={desc}
+            onChange={setDesc}
+          />
+        ) : (
+          <p
+            className="singlePostDesc"
+            dangerouslySetInnerHTML={{ __html: sanitizeHTML(desc) }}
+          ></p>
         )}
         {updateMode && (
           <button className="singlePostButton" onClick={updateHandler}>
             Update
           </button>
         )}
+        </div>
+        <Footer/>
       </div>
-     <Footer/>
-    </div>
-  );
+    );
 }
+
+
+   
